@@ -1,0 +1,147 @@
+1) Command to check POE version
+
+regress@lagaM-plat-p1c3-01> show chassis firmware detail
+FPC 0
+   PoE firmware            3.5.5.0.32
+   Boot Firmware
+      loader               FreeBSD EFI loader 2.1
+FPC 1
+   PoE firmware            3.5.5.0.32
+   Boot Firmware
+      loader               FreeBSD EFI loader 2.1
+
+{master:0}
+regress@lagaM-plat-p1c3-01>
+
+
+
+2)Command to check POE interface characteristics
+
+regress@lagaM-plat-p1c3-01> show poe interface mge-1/0/0
+PoE interface status:
+PoE interface                : mge-1/0/0
+Administrative status        : Enabled
+Operational status           :  OFF
+Operational status detail    : Port is not connected
+FourPair status              : Disabled
+Power limit on the interface : 15.4W
+Priority                     : Low
+Power consumed               : 0.0W
+Class of power device        : not-applicable
+PoE Mode                     :   802.3bt
+
+{master:0}
+regress@lagaM-plat-p1c3-01>
+
+
+3)Command to check POE poe controller
+
+
+regress@lagaM-plat-p1c3-01> show poe controller
+Controller  Maximum   Power         Guard    Management   Status        Lldp
+index       power     consumption   band                                Priority
+   0        1260W     0.00W           0W     Class        BT_MODE       Disabled
+   1        753W      37.00W          0W     Class        BT_MODE       Disabled
+
+{master:0}
+regress@lagaM-plat-p1c3-01>
+
+
+
+
+Steps for connecting to sifospoe:
+---------------------------------
+
+[root@sifospoe-linux2 ~]# ls -lrt
+total 15760
+drwxr-xr-x   2 root root       6 Jul 10  2017 Downloads
+drwxr-xr-x   2 root root       6 Jul 10  2017 Desktop
+drwxr-xr-x   2 root root       6 Jul 10  2017 Videos
+drwxr-xr-x   2 root root       6 Jul 10  2017 Templates
+drwxr-xr-x   2 root root       6 Jul 10  2017 Public
+drwxr-xr-x   2 root root       6 Jul 10  2017 Pictures
+drwxr-xr-x   2 root root       6 Jul 10  2017 Music
+drwxr-xr-x   2 root root       6 Jul 10  2017 Documents
+-rw-r--r--.  1 root root 1593012 Sep  7  2017 freeradius-2.2.6-6.el6_7.x86_64.rpm
+-rw-r--r--.  1 root root    1817 Sep  7  2017 initial-setup-ks.cfg
+-rw-------.  1 root root    1766 Sep  7  2017 anaconda-ks.cfg
+-rw-r--r--.  1 root root       0 Oct  3  2017 test
+-rw-r--r--.  1 root root       0 Oct  3  2017 test1
+-rw-r--r--.  1 root root       0 Oct  4  2017 test-vm-ftp
+-rw-r--r--.  1 root root       0 Oct  4  2017 test-ftp
+-rw-r--r--.  1 root root       0 Oct  4  2017 test11
+-rw-r--r--   1 root root   29976 Oct  5  2017 gdbm-1.8.0-39.el6.i686.rpm
+drwxr-xr-x. 15 root root    4096 Oct  5  2017 freeradius-server
+lrwxrwxrwx   1 root root      41 Nov  8  2017 control-socket -> /etc/raddb/sites-available/control-socket
+drwxr-xr-x   2 root root     141 Apr 19  2019 certs
+-rw-r--r--   1 root root   13560 Jun 10  2019 psa_installer.sh
+-rw-r--r--   1 root root 7874560 Jun 10  2019 Sifos_PSA_Archive_4_2_10.tar
+-rw-r--r--   1 root root       5 Jul 15  2019 test.txt
+-rw-r--r--   1 root root 6533120 Sep 29  2019 Sifos_PSA_Archive_5_0_01.tar
+-rw-r--r--   1 root root   14891 Sep 29  2019 psa_installer_5.sh
+drwxrwxrwx   4 root root      34 Sep 29  2019 Sifos
+drwxrwxrwx   2 root root    4096 Sep 29  2019 bin
+-rwxr-xr-x   1 root root   10097 Oct 21  2019 tclshrcbackup
+-rw-------.  1 root root    2804 Feb  3  2020 nohup.out
+-r-xr--r--   1 root root    1553 May 11  2021 PowerShell_TCL_5backup.sh
+-rwxrwxrwx   1 root root    1500 May 11  2021 PowerShell_TCL.SH
+-r-xr--r--   1 root root    1542 May 11  2021 PowerShell_WISH_5.sh
+-rwxr-xr-x   1 root root   10097 Jun 22  2021 tclshrc_bkup
+-r-xr--r--   1 root root    1572 Mar 22  2022 PowerShell_TCL_5.sh
+-rw-r--r--   1 root root     463 May  5  2022 sifos.script
+[root@sifospoe-linux2 ~]# ./PowerShell_TCL_5.sh
+Starting PowerShell TCL....
+homePath=
+/root/Sifos/PSA3000
+HOME=
+/root
+copying tclshrc...
+64-bit machine detected - attempting to load tbcload17_64_linux.so
+Load succeeded! Tcl shell is 64-bit.
+Loading User Script: psa_echo.tbc
+Loading User Script: alc_updater_16.tbc
+Loading User Script: pva_veriphy.tbc
+Loading User Script: psa_port_loader.tbc
+Loading User Script: psa_smartlib.tcl
+Loading User Script: mps_dc_dutycycle.tcl
+Loading User Script: crc.tcl
+Loading User Script: psa_tcl_socket_client.tcl
+Loading User Script: psl_quick_test.tcl
+Loading User Script: psa_loadtest.tcl
+Loading User Script: psa_cross_port.tcl
+Loading User Script: psa_quick_test.tcl
+
+************************************************************
+**********     PowerShell Command Processor 5.0   **********
+**********       PowerSync & PhyView Analyzers    **********
+**********          Copyright 2005-2019           **********
+**********        Sifos Technologies, Inc.        **********
+**********                                        **********
+**********   Enter 'psa_command' for command list **********
+**********   Use '<command> -?' for command help  **********
+************************************************************
+
+
+Connecting to 10.204.33.73, [Enter] to Continue, 'N' to alter...
+
+
+************  Connecting to PSA at 10.204.33.73 ************
+
+PSE Local Configuration ************************************
+  /root/Sifos/PSA3000/Config/-spec.txt
+
+***** Use psa_pse to configure PSA Analyzer for this PSE. ******
+
+
+PSA-1,1>power_bt 2,2 c 1 lldp force 3
+DOWN Alt-A: 0.3 V 1.0 mA Alt-B: 0.1 V 1.0 mA LINK_DOWN
+
+
+PSA-2,2+>power_bt 2,2 c 1 lldp force 3
+PWRD_A Alt-A: 55.9 V 68.0 mA Alt-B: 0.1 V 1.0 mA STANDBY
+ 
+ 
+PSA-3,1>paverage 2,2 stat
+Slot,Port 2,2
+ Average_Power=  3.8 Watts
+PSA-2,2+>
